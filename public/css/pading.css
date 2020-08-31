@@ -1,0 +1,79 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/templates/shop-homepage)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+
+body {
+    padding-top: 30px;
+}
+
+body {
+    background-image: url("/img/patron.png");
+    background-repeat: repeat;
+}
+
+.container {
+    min-height: 100%;
+}
+
+#contenido {
+    -webkit-box-shadow: 0px 5px 22px 28px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 5px 22px 28px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 5px 22px 28px rgba(0, 0, 0, 0.25);
+}
+
+.fixed-top {
+    -webkit-box-shadow: 0px 22px 29px -8px rgba(0, 0, 0, 0.44);
+    -moz-box-shadow: 0px 22px 29px -8px rgba(0, 0, 0, 0.44);
+    box-shadow: 0px 22px 29px -8px rgba(0, 0, 0, 0.44);
+    padding-bottom: 5px;
+}
+
+a {
+    color: black;
+}
+
+footer {
+    font-family: Script MT;
+    font-size: 21px;
+    background-color: #0196dc;
+}
+
+footer p {
+    text-align: center;
+}
+
+footer div {
+    text-align: center;
+}
+
+.icono {
+    margin-left: 1%;
+    color: black;
+    font-size: 40px;
+}
+
+.d-block {
+    padding-top: 50px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0196dc;
+    border-color: #0196dc;
+}
+
+#carrito {
+    font-size: 36px;
+    color: #0196dc;
+}
+
+.precio {
+    background-color: #f01337;
+    color: #fff7f7;
+    transform: translate(9%, 27%);
+    padding: 5px;
+    font-family: sans-serif;
+    border-radius: 15px;
+}

@@ -1,0 +1,59 @@
+.bar-menu .item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.bar-menu {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.bar-menu h1 {
+    font-size: 30px;
+    font-family: Script MT;
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.bar-menu h1:affter {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background-color: #ff8159;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.logo-slider .item {
+    background-color: #fff;
+    box-shadow: 0 4px 5px #cacaca;
+    border-radius: 8px;
+}
+
+.logo-slider .slick-slide {
+    margin: 15px;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #00b8fe;
+}
+
+.slick-dots li button:before {
+    font-size: 12px;
+}
+
+.item:hover {
+    display: block;
+    transition: all ease 0.3s;
+    transform: scale(1.1) translateY(-5px);
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 10px;
+}
