@@ -29,13 +29,14 @@
         
         <br>
 
-        <div id="tablaLista">
+        <div id="tablaLista" class="table-responsive-md">
             
         </div>
         
         
     </div>
-    <br><br>
+    <div id="compra-final" class="compra-final"></div>
+    <br>
 </div>
 
 @endsection
