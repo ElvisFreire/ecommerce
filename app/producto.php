@@ -35,8 +35,12 @@ class producto
     function edtProducto(){
         return 0;
     }
-    function verProducto(){
-        return $this->producto=DB::select('select * from producto');
+    function verProducto($x){
+        if($x=='all'){
+            return $this->producto=DB::select('select * from producto');
+        }
+        return $this->producto=DB::select('SELECT * FROM producto ORDER BY RAND() LIMIT 3');
+        //rand() limit 3 selecciona 3 productos aleatorios
         
     }
 

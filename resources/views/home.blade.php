@@ -13,6 +13,9 @@
 
 @section('contenido')
 
+@php
+    $lista=\Session::get('carrito');
+@endphp
 <!-- Page Content -->
 <div class="container  bg-light" id="contenido">
 
@@ -23,16 +26,20 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-                <img class="d-block img-fluid" src="http://placehold.it/1150x500" alt="First slide">
+                <img class="d-block img-fluid" src="https://libresse-images.essity.com/images-c5/75/275075/optimized-AzureJPG2K/rutina-homepagebanner-1500x600px-jpg.jpg?w=1500&h=600&imPolicy=dynamic" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block img-fluid" src="http://placehold.it/1150x500" alt="Second slide">
+                <img class="d-block img-fluid" src="https://media-exp1.licdn.com/dms/image/C4E1BAQHZSccfAqvueg/company-background_10000/0?e=2159024400&v=beta&t=jbwZRaM1xoNtCCjp8FsXID6uraIHmdNgwta7X0Mc0UM" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block img-fluid" src="http://placehold.it/1150x500" alt="Third slide">
+                <img class="d-block img-fluid" src="https://ml9ggqyby6dm.i.optimole.com/lyA_5Pc-jS1aBbpo/w:auto/h:auto/q:90/https://ferjos.com.gt/wp-content/uploads/2020/05/cashitas-2.jpg" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block img-fluid" src="https://colcafe.s3.amazonaws.com/co-colcafe/wp-content/uploads/2020/05/22165634/05-22-BannerPostres1500x600-Colcafe-v1.png" alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -81,80 +88,42 @@
         <!-- productos-->
 
         <div class="row">
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Nombre producto</a>
-                        </h4>
-                        <h5><b>$24.99</b></h5>
-                        <h6>CONT. NETO: 150g</h6>
-                        <p class="card-text">Aqui va una pequeña descripcion del producto</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="handle-counter" id="handleCounter">
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                            <button class="counter-minus btn btn-primary" onClick="activarContador(this.name, this.id)"
-                                id='menos' name="1">-</button>
-                            <input type="text" name="contador1" value="1">
-                            <button class="counter-plus btn btn-primary" onClick="activarContador(this.name, this.id)"
-                                name="1" id="plus">+</button>
+            <!-- ciclo que rrecorre un array donde contiene todos los productos BD-->
+            
+            @foreach ($producto as $item)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100" id="cont{{ $item->idProducto }}">
+                        <img class="card-img-top" src="{{ $item->imagen }}" alt="">
+                        <div class="card-body" >
+                            <h4 class="card-title">
+                                <a href="#">{{ $item->nombre }}</a>
+                            </h4>
+                            <h5><b>${{ $item->precio }}</b></h5>
+                            <h6>CONT. NETO: {{ $item->contNeto }}</h6>
+                            <p class="card-text">{{ $item->descripcion }}</p>
                         </div>
+                        <div class="card-footer">
+                            <div class="handle-counter" id="handleCounter">
+                                <button class="btn btn-primary" onClick=" aggitem(
+                                    {{$item->idProducto}}
+                                )">Agregar</button>
+                                <button class="counter-minus btn btn-primary"
+                                    onClick="activarContador(this.name, this.id)" id='menos'
+                                    name="{{ $item->idProducto }}">-</button>
+                                <input type="text" name="contador{{ $item->idProducto }}" value="1">
+                                <button class="counter-plus btn btn-primary"
+                                    onClick="activarContador(this.name, this.id)" name="{{ $item->idProducto }}"
+                                    id="plus">+</button>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Nombre producto</a>
-                        </h4>
-                        <h5><b>$24.99</b></h5>
-                        <h6>CONT. NETO: 150g</h6>
-                        <p class="card-text">Aqui va una pequeña descripcion del producto</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="handle-counter" id="handleCounter">
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                            <button class="counter-minus btn btn-primary" onClick="activarContador(this.name, this.id)"
-                                id='menos' name="2">-</button>
-                            <input type="text" name="contador2" value="1">
-                            <button class="counter-plus btn btn-primary" onClick="activarContador(this.name, this.id)"
-                                name="2" id="plus">+</button>
-                        </div>
+            @endforeach
 
-                    </div>
-                </div>
-            </div>
+            <!-- fin productos-->
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Nombre producto</a>
-                        </h4>
-                        <h5><b>$24.99</b></h5>
-                        <h6>CONT. NETO: 150g</h6>
-                        <p class="card-text">Aqui va una pequeña descripcion del producto</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="handle-counter" id="handleCounter">
-                            <a href="#" class="btn btn-primary">Agregar</a>
-                            <button class="counter-minus btn btn-primary" onClick="activarContador(this.name, this.id)"
-                                id='menos' name="3">-</button>
-                            <input type="text" name="contador3" value="1">
-                            <button class="counter-plus btn btn-primary" onClick="activarContador(this.name, this.id)"
-                                name="3" id="plus">+</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+        </div>
 
             <!-- fin productos-->
 
@@ -175,5 +144,21 @@
     <!-- menu-bar JavaScript -->
     <script src="/js/slick.min.js"></script>
     <script src="/js/menu-bar.js"></script>
+    <script>
+        $('.carousel').carousel({
+        interval: 2500
+        })
+        //esta parte de codigo lee la variable de seción al recargar la página, 
+        //estableciendo la cantidad en cada item, y pintando el borde inferior verde
+        window.onload = function() 
+        {
+            @if($lista['item'] != NULL)
+            @foreach($lista['item'] as $valor)
+            document.getElementsByName("contador" + '{{$valor['id']}}')[0].value = '{{$valor['cantidad']}}';
+            document.getElementById("cont" + '{{$valor['id']}}').style.borderBottom= 'rgb(29 181 2) 8px solid';
+            @endforeach
+            @endif
 
+        }
+    </script>
     @endsection

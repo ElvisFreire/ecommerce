@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\producto;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,9 @@ class HomeController extends Controller
             );
             \Session::put(['carrito'=>$carrito]);
         }
-        return view ('home');
-    }
+        $producto=new producto();
+        $producto=$producto->verProducto("3");
+
+        return view ('home',compact('producto'));   
+     }
 }

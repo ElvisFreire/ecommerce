@@ -184,4 +184,20 @@
          th {
              display: none;
          }
+         #tot {
+             display: none;
+         }
+         #tot:nth-of-type(1):before,
+         #tot:nth-of-type(3):before {
+             content: "";
+         }
+         #total-tabla:nth-of-type(2):before {
+             content: "Total:";
+         }
+         #recargo-tabla:nth-of-type(2):before {
+             content: "Recargo:";
+         }
+         #vfinal-tabla:nth-of-type(2):before {
+             content: "V Final:";
+         }
      }

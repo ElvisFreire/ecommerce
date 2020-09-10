@@ -14,9 +14,10 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        //$producto=Categoria::imprimir();
+        //se envia all por parametro
+        //producto almacenaría todos los productos existentes en BD
         $producto=new producto();
-        $producto=$producto->verProducto();
+        $producto=$producto->verProducto("all");
         
         return view('producto', compact('producto'));
     }
