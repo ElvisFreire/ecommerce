@@ -40,17 +40,10 @@
             <!-- inicio menu bar -->
 
             <div class="bar-menu">
-
+                <h1 style="font-family: cursive"><b>Nombre Categoria</b></h1>
                 <h1>Realiza tus compras!</h1>
-                <div class="logo-slider">
+                
 
-
-                    @for ($i = 1; $i <= 3; $i++) <?php echo " <div class='item'
-                            id=",
-                            $i,
-                            "> <a href='/producto'><img src='http://placehold.it/400x200'></a></div>"; ?>
-                    @endfor
-                </div>
             </div>
             <!-- fin menu bar -->
 
@@ -127,6 +120,8 @@
     <script>
         window.onload = function() 
         {
+            //esta parte de codigo lee la variable de seción al recargar la página, 
+        //estableciendo la cantidad en cada item, y pintando el borde inferior verde
             @if($lista['item'] != NULL)
             @foreach($lista['item'] as $valor)
             document.getElementsByName("contador" + '{{$valor['id']}}')[0].value = '{{$valor['cantidad']}}';

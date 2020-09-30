@@ -16,8 +16,8 @@ Route::bind('product', function($slug){
     return App\Product::where('slug',$slug)->first();
 });
 
-Route::get('/laravel', function () {
-    return view('welcome');
+Route::get('/ejm', function () {
+    return view('ejemplo');
 });
 Route::get('/nosotros', function () {
     return view('nosotros');
