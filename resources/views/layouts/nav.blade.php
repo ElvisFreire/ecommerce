@@ -4,18 +4,18 @@
     $pvp=session('carrito');
     
 @endphp
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" >
+    <div class="container" >
         <a class="navbar-brand" href="/"><img src="/img/cruilov.png" alt=""></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Inicio</a>
+        <div class="collapse navbar-collapse" id="navbarResponsive" >
+            <ul class="navbar-nav ml-auto" >
+                <li class="nav-item" >
+                    <a class="nav-link" href="/" >Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/nosotros">Nosotros</a>
@@ -23,8 +23,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contactenos">Contactenos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/comoComprar">Como comprar</a>
+                <li class="dropdown">
+                    <a class=" nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Productos <b class="caret"></b> </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Poductos1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Poductos2</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Poductos3</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Poductos4</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/comoComprar">Paquetes- Combos</a>
@@ -38,7 +52,7 @@
 
             </ul>
         </div>
-        <i class="icono fas fa-shopping-cart" style="color:#0196dc; "></i>
+        <a href="/miCompra"><i class="icono fas fa-shopping-cart" style="color:#0196dc; "></i></a>
 
     <p class="precio" id='car-precio'>$ {{number_format((float)$pvp['total'], 2, '.', '')}} </p>
     </div>
