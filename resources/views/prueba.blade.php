@@ -43,7 +43,7 @@
         <br><br><br>
         <div class="carta">
             <div class="cabezera">
-                <h2 class="title">Event Registration Form</h2>
+                <h2 class="title">Formulario </h2>
             </div>
             <div class="contenidoform">
                 <form class="needs-validation" novalidate>
