@@ -98,7 +98,8 @@ function verlista() {
 
 
             if (data['item'] != "") {
-                html += "<button type='button' class='btn btn-dark'>Realizar Pago</button> <br> <br>"
+                html += "<div class='contenedor-modal'>"
+                html += "<button type='button' class='btn btn-dark' data-toggle='modal' data-target='#miModal'>Realizar Pago</button> <br> <br>"
 
             } else
                 html += "<br><br><br><h3 style='text-align: center;font-family:Script MT'>Lista vacia</h3>";

@@ -10,8 +10,10 @@
       padding: 1em;
       text-align: center;
   }
- 
- 
+ .modal-content{
+    margin-top: 200px;
+ }
+
 </style>
 @endsection
 @section('contenido')
@@ -29,15 +31,36 @@
         
         <br>
 
-        <div id="tablaLista" class="table-responsive-md">
-            
-        </div>
-        
-        
+        <div id="tablaLista" class="table-responsive-md"></div>
     </div>
-    <div id="compra-final" class="compra-final"></div>
-    <br>
+   
+
+
+
+
+    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Confirme Identidad
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                
+                </div>
+                <div class="modal-body">
+                    <form action="#" class="form-inline">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" id="cedula" placeholder="Ingrese Cedúla">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Aceptar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 @endsection
 @section('script')
