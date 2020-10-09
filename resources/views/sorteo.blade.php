@@ -46,7 +46,8 @@
                 <h2 class="title">Formulario </h2>
             </div>
             <div class="contenidoform">
-                <form class="needs-validation" novalidate>
+                <form method="POST" action="form-val" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    @csrf
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom03">Factura</label>
@@ -54,12 +55,10 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend">#</span>
                                 </div>
-                                <input type="number" class="form-control" id="factura" placeholder="Número de factura"
-                                    required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese número de factura.
-                                </div>
+                                <input type="number" class="form-control" name="factura" id="factura"
+                            value="{{old('factura')}}" placeholder="Número de factura">
                             </div>
+                            {!! $errors->first('factura', "<small style='color:red'>:message</small><br>") !!}
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom03">RUC o RISE</label>
@@ -67,13 +66,18 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend">#</span>
                                 </div>
-                                <input type="number" class="form-control" id="ruc" placeholder="Número de RUC o RISE"
-                                    required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese número de RUC o RISE.
-                                </div>
+                                <input type="number" class="form-control" name="ruc" id="ruc"
+                                value="{{old('ruc')}}" placeholder="Número de RUC o RISE">
                             </div>
+                            {!! $errors->first('ruc', "<small style='color:red'>:message</small><br>") !!}
                         </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="img">Foto de factura</label>
+                            <input type="file" name="img" id="" value="{{old('img')}}">
+                            {!! $errors->first('img', "<small style='color:red'>:message</small><br>") !!}
+                        </div> 
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
@@ -86,20 +90,16 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombres completos"
-                                    required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
+                                <input type="text" class="form-control" name="nombre" id="nombre"
+                                value="{{old('nombre')}}" placeholder="Nombres completos">
                             </div>
+                            {!! $errors->first('nombre', "<small style='color:red'>:message</small><br>") !!}
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <input type="text" class="form-control" id="apellido" placeholder="Apellidos completos"
-                                required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                            <input type="text" class="form-control" name="apellido" id="apellido"
+                            value="{{old('apellido')}}" placeholder="Apellidos completos">
+                            {!! $errors->first('apellido', "<small style='color:red'>:message</small><br>") !!}
                         </div>
                     </div>
                     <div class="form-row">
@@ -108,33 +108,26 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                                 </div>
-                                <input type="text" class="form-control" id="email" placeholder="Correo electrónico"
-                                    aria-describedby="inputGroupPrepend" required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese su correo.
-                                </div>
+                                <input type="email" class="form-control" name="email" id="email"
+                                value="{{old('email')}}" placeholder="Correo electrónico" aria-describedby="inputGroupPrepend">
                             </div>
+                            {!! $errors->first('email', "<small style='color:red'>:message</small><br>") !!}
                         </div>
                     </div>
-
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-home"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="ciudad" placeholder="Ciudad" required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese su ciudad.
-                                </div>
+                                <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad" value="{{old('ciudad')}}">
                             </div>
+                            {!! $errors->first('ciudad', "<small style='color:red'>:message</small><br>") !!}
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <input type="text" class="form-control" id="provincia" placeholder="Provincia" required>
-                            <div class="invalid-feedback">
-                                Porfavor ingrese su Provincia.
-                            </div>
+                            <input type="text" class="form-control" name="provincia" id="provincia" placeholder="Provincia" value="{{old('provincia')}}">
+                            {!! $errors->first('provincia', "<small style='color:red'>:message</small><br>") !!}
                         </div>
                     </div>
                     <div class="form-row">
@@ -144,11 +137,10 @@
                                     <span class="input-group-text" id="inputGroupPrepend"><i
                                             class="fas fa-map-marker-alt"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="calle1" placeholder="Calle principal" required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese dirección.
-                                </div>
+                                <input type="text" class="form-control" name="calle1" id="calle1"
+                                value="{{old('calle1')}}" placeholder="Calle principal">
                             </div>
+                            {!! $errors->first('calle1', "<small style='color:red'>:message</small><br>") !!}
                         </div>
                         <div class="col-md-4 mb-3">
                             <div class="input-group">
@@ -156,43 +148,38 @@
                                     <span class="input-group-text" id="inputGroupPrepend"><i
                                             class="fas fa-map-marker-alt"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="calle2" placeholder="Calle secundaria" required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese dirección.
-                                </div>
+                                <input type="text" class="form-control" name="calle2" id="calle2"
+                                value="{{old('calle2')}}" placeholder="Calle secundaria">
                             </div>
+                            {!! $errors->first('calle2', "<small style='color:red'>:message</small><br>") !!}
                         </div>
 
                     </div>
                     <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupPrepend"><i
-                                            class="fas fa-phone-alt"></i></span>
-                                </div>
-                                <input type="text" class="form-control" id="telefono" placeholder="Teléfono fijo" required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese dirección.
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-4 mb-3">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend"><i
                                             class="fas fa-mobile-alt"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="celular" placeholder="Teléfono celular"
-                                    required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese dirección.
+                                <input type="number" class="form-control" name="celular" id="celular"
+                                value="{{old('celular')}}" placeholder="Teléfono celular">
+                            </div>
+                            {!! $errors->first('celular', "<small style='color:red'>:message</small><br>") !!}
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i
+                                            class="fas fa-phone-alt"></i></span>
                                 </div>
+                                <input type="number" class="form-control" name="telefono" id="telefono"
+                                value="{{old('telefono')}}" placeholder="Teléfono fijo">
+
                             </div>
                         </div>
 
                     </div>
-
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom01">Datos de negocio</label>
@@ -201,41 +188,35 @@
                                     <span class="input-group-text" id="inputGroupPrepend"><i
                                             class="fas fa-store"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="negocio" placeholder="Nombre de Negocio"
-                                    required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
+                                <input type="text" class="form-control" name="negocio" id="negocio"
+                                value="{{old('negocio')}}" placeholder="Nombre de Negocio">
                             </div>
+                            {!! $errors->first('negocio', "<small style='color:red'>:message</small><br>") !!}
                         </div>
 
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
-
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend"><i
                                             class="fas fa-map-marker-alt"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="calle1" placeholder="Calle principal" required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese dirección.
-                                </div>
+                                <input type="text" class="form-control" name="negociocalle1" id="negocioCalle1"
+                                value="{{old('negociocalle1')}}" placeholder="Calle principal">
                             </div>
+                            {!! $errors->first('negociocalle1', "<small style='color:red'>:message</small><br>") !!}
                         </div>
                         <div class="col-md-4 mb-3">
-
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend"><i
                                             class="fas fa-map-marker-alt"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="calle2" placeholder="Calle secundaria" required>
-                                <div class="invalid-feedback">
-                                    Porfavor ingrese dirección.
-                                </div>
+                                <input type="text" class="form-control" name="negociocalle2" id="negociocalle2"
+                                value="{{old('negociocalle2')}}" placeholder="Calle secundaria">
                             </div>
+                            {!! $errors->first('negociocalle2', "<small style='color:red'>:message</small><br>") !!}
                         </div>
 
                     </div>
@@ -244,18 +225,23 @@
                             <label for="validationCustom01"><b>Tipo de Cliente</b></label>
                         </div>
                         <div class="col-md-8 mb-3">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline1" name="customRadioInline1"
-                                    class="custom-control-input" required>
-                                <label class="custom-control-label" for="customRadioInline1">Mayorista</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipoCliente" id="gridRadios1"
+                                 value="Mayorista">
+                                <label class="form-check-label" for="gridRadios1">
+                                    Mayorista
+                                </label>
                             </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline2" name="customRadioInline1"
-                                    class="custom-control-input" required>
-                                <label class="custom-control-label" for="customRadioInline2">Covertura</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipoCliente" id="gridRadios2"
+                                 value="Covertura">
+                                <label class="form-check-label" for="gridRadios2">
+                                    Covertura
+                                </label>
                             </div>
+                            {!! $errors->first('tipoCliente', "<small style='color:red'>:message</small><br>") !!}
                         </div>
-                        
+
                     </div>
 
 
@@ -279,25 +265,5 @@
     <!-- menu-bar JavaScript -->
     <script src="/js/slick.min.js"></script>
     <script src="/js/menu-bar.js"></script>
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-
-    </script>
+   
 @endsection

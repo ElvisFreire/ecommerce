@@ -22,9 +22,10 @@ Route::get('/ejm', function () {
 Route::get('/nosotros', function () {
     return view('nosotros');
 });
-Route::get('/prueba', function () {
-    return view('prueba');
+Route::get('/form-sorteo', function () {
+    return view('sorteo');
 });
+
 Route::get('/comoComprar', function () {
     return view('comoComprar');
 });
@@ -41,3 +42,5 @@ Route::get('/producto', 'ProductosController@index');
 Route::get('/aggitem', 'ListaController@aggitem');
 Route::get('/brritem', 'ListaController@brritem');
 Route::get('/verlista', 'ListaController@verlista');
+
+Route::post('/form-val','SorteoController@addForm');
